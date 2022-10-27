@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail # Fail fast and catch variable typos
+
+# Paths
+CONFIG_DIR="$HOME/.config/brokkr"
+BROKKR_DIR="$HOME/.brokkr"
+
+# Install Ansible
+if ! [ -x "$(command -v ansible)" ]; then
+  sudo apt-get -y install ansible
+fi
+
+# Clone repository
+if ! [[ -d "$BROKKR_DIR" ]]; then
+  git clone "https://github.com/ALT-F4-LLC/dotfiles.git" "$BROKKR_DIR"
+else
+  git -C "$BROKKR_DIR" pull
+fi
+
+# Change cwd
+cd $BROKKR_DIR
+
+# Update Galaxy
+ansible-galaxy install -r requirements.yml
+
+# Run playbook
+ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$DOTFILES_DIR/main.yaml" "$@"
