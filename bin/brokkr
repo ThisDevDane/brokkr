@@ -30,7 +30,7 @@ fi
 cd $BROKKR_DIR
 
 # Update Galaxy
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r requirements.yaml
 
 # Run playbook
 echo "Run Brokkr playbook"
