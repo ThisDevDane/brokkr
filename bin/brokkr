@@ -6,11 +6,20 @@ CONFIG_DIR="$HOME/.config/brokkr"
 BROKKR_DIR="$HOME/.brokkr"
 
 # Install Ansible
+echo "Checking for ansible install"
 if ! [ -x "$(command -v ansible)" ]; then
+  echo "Installing ansible..."
   sudo apt-get -y install ansible
 fi
 
+echo "Checking for git install"
+if ! [ -x "$(command -v git)" ]; then
+  echo "Installing git..."
+  sudo apt-get -y install git
+fi
+
 # Clone repository
+echo "Downloading Brokkr..."
 if ! [[ -d "$BROKKR_DIR" ]]; then
   git clone "https://github.com/ALT-F4-LLC/dotfiles.git" "$BROKKR_DIR"
 else
@@ -24,4 +33,5 @@ cd $BROKKR_DIR
 ansible-galaxy install -r requirements.yml
 
 # Run playbook
+echo "Run Brokkr playbook"
 ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$DOTFILES_DIR/main.yaml" "$@"
