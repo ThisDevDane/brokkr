@@ -14,9 +14,19 @@
     - unzip
     - curl
     - doxygen
-    - tree-sitter
     state: latest
   become: yes
+
+- name: Existing tree-sitter install
+  stat:
+    path: "/usr/local/bin/tree-sitter"
+  register: install_ts
+
+- name: Download tree-sitter
+  ansible.builtin.unarchive:
+    url: https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
+    dest: /usr/local/bin
+  when: not install_ts.stat.exists
 
 - name: Clone
   ansible.builtin.git:
