@@ -11,5 +11,6 @@
     - role: oh-my-zsh
     - role: docker
       when: is_wsl|default(false)|bool == false
+    - role: neovim
  
 
