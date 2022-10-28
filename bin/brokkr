@@ -5,10 +5,6 @@ set -euo pipefail # Fail fast and catch variable typos
 CONFIG_DIR="$HOME/.config/brokkr"
 BROKKR_DIR="$HOME/.brokkr"
 
-# Set SUDOER to no passwd
-REAL_USER=$USER
-sudo -- bash -c "echo \"$REAL_USER: ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
-
 # Install Ansible
 echo "Checking for ansible install"
 if ! [ -x "$(command -v ansible)" ]; then
