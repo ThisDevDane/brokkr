@@ -5,4 +5,5 @@
   roles:
     - role: git
     - role: zsh
+    - role: oh-my-zsh
 
