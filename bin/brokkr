@@ -5,6 +5,9 @@ set -euo pipefail # Fail fast and catch variable typos
 CONFIG_DIR="$HOME/.config/brokkr"
 BROKKR_DIR="$HOME/.brokkr"
 
+# Set SUDOER to no passwd
+sudo echo "$USER: ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # Install Ansible
 echo "Checking for ansible install"
 if ! [ -x "$(command -v ansible)" ]; then
@@ -34,4 +37,4 @@ ansible-galaxy install -r requirements.yaml
 
 # Run playbook
 echo "Run Brokkr playbook"
-ansible-playbook -k --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$BROKKR_DIR/main.yaml" "$@"
+ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$BROKKR_DIR/main.yaml" "$@"
