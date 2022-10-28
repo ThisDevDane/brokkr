@@ -1,0 +1,17 @@
+---
+- name: Set sudo 
+  ansible.builtin.copy:
+    content: "{{ansible_env.USER}} ALL=(ALL) NOPASSWD:ALL"
+    dest: /etc/sudoers.d/10-brokkr
+  become: yes
+
+- name: Install
+  ansible.builtin.package:
+    name:
+      - jq
+      - curl
+      - dnsutils
+      - nmap
+      - net-tools
+    state: latest
+  become: yes

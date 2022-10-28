@@ -6,6 +6,7 @@
     is_wsl: "{% if ansible_env.WSL_DISTRO_NAME is defined %}true{% else %}false{%endif%}"
 
   roles:
+    - role: system
     - role: git
     - role: zsh
     - role: oh-my-zsh
