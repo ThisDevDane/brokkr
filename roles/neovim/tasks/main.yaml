@@ -2,19 +2,19 @@
 - name: Dependencies
   package:
     name:
-      install
-      ninja-build
-      gettext
-      libtool
-      libtool-bin
-      autoconf
-      automake
-      cmake
-      g++
-      pkg-config
-      unzip
-      curl
-      doxygen
+    - install
+    - ninja-build
+    - gettext
+    - libtool
+    - libtool-bin
+    - autoconf
+    - automake
+    - cmake
+    - g++
+    - pkg-config
+    - unzip
+    - curl
+    - doxygen
     state: latest
   become: yes
 
