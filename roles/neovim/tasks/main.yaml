@@ -14,6 +14,7 @@
     - unzip
     - curl
     - doxygen
+    - tree-sitter
     state: latest
   become: yes
 
