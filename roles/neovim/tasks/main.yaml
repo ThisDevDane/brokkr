@@ -2,7 +2,6 @@
 - name: Dependencies
   package:
     name:
-    - install
     - ninja-build
     - gettext
     - libtool
