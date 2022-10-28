@@ -14,7 +14,7 @@
     - unzip
     - curl
     - doxygen
-    - unzip
+    - gzip
     state: latest
   become: yes
 
