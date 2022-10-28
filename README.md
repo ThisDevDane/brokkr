@@ -4,7 +4,7 @@ Automated Debian dotfiles and environment
 ## Running
 
 ```bash
-bash -c "$(wget -qO- https://raw.githubusercontent.com/ThisDrunkDane/brokkr/main/bin/brokkr)"
+bash -c "$(wget -qO- https://raw.githubusercontent.com/ThisDrunkDane/brokkr/main/bin/brokkr) -k"
 ```
 
 ## Attribution
