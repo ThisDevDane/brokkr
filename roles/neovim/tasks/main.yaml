@@ -33,7 +33,7 @@
  
 - name: Uncompress tree-sitter
   ansible.builtin.command:
-    src: gzip -d {{ts_dl.dest}}
+    cmd: gzip -d {{ts_dl.dest}}
   when: not install_ts.stat.exists
   become: yes
 
