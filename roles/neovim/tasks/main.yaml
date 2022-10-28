@@ -37,6 +37,13 @@
   when: not install_ts.stat.exists
   become: yes
 
+- name: Set executable flag on tree-sitter
+  ansible.builtin.file:
+    path: {{ts_dl.dest}}
+    mode: a+x
+  when: not install_ts.stat.exists
+  become: yes
+
 - name: Clone
   ansible.builtin.git:
     clone: yes
