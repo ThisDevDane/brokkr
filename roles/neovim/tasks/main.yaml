@@ -29,11 +29,13 @@
     dest: /usr/local/bin/tree-sitter.gz
   when: not install_ts.stat.exists
   register: ts_dl
+  become: yes
  
 - name: Uncompress tree-sitter
   command:
     src: gzip -d {{ts_dl.dest}}
   when: not install_ts.stat.exists
+  become: yes
 
 - name: Clone
   ansible.builtin.git:
