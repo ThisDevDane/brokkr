@@ -1,0 +1,56 @@
+# Brokkr
+export BROKKR_PATH="$HOME/.bokkr/bin"
+
+# Path
+export PATH="$BROKKR_PATH:$PATH"
+
+# oh-my-zsh installation.
+export ZSH="/home/hoej/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git git-prompt golang command-not-found docker docker-compose dotenv kubectl asdf ansible helm 1password)
+source $ZSH/oh-my-zsh.sh
+
+# Defaults
+export PAGER=most
+export EDITOR='nvim'
+export ARCHFLAGS="-arch $(arch)"
+
+# Aliases
+
+
+# The next line sources a private environment file if it exists
+if [ -f "$HOME/.zsh_public" ]; then . "$HOME/.zsh_public"; fi
+if [ -f "$HOME/.zsh_private" ]; then . "$HOME/.zsh_private"; fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Auto-complete
+eval "$(cmctl completion zsh)"; compdef _cmctl cmctl
+eval "$(argocd completion zsh)"; compdef _argocd argocd
+
+{% if setup_1p_ssh is true %}
+# https://1password.community/discussion/128023/ssh-agent-on-windows-subsystem-for-linux
+export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+# need `ps -ww` to get non-truncated command for matching
+# use square brackets to generate a regex match for the process we want but that doesn't match the grep command running it!
+ALREADY_RUNNING=$(ps -auxww | grep -q "[n]piperelay.exe -ei -s //./pipe/openssh-ssh-agent"; echo $?)
+if [[ $ALREADY_RUNNING != "0" ]]; then
+    if [[ -S $SSH_AUTH_SOCK ]]; then
+        # not expecting the socket to exist as the forwarding command isn't running (http://www.tldp.org/LDP/abs/html/fto.html)
+        echo "removing previous socket..."
+        rm $SSH_AUTH_SOCK
+    fi
+    echo "Starting SSH-Agent relay..."
+    # setsid to force new session to keep running
+    # set socat to listen on $SSH_AUTH_SOCK and forward to npiperelay which then forwards to openssh-ssh-agent on windows
+    (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+{% endif %}
