@@ -26,13 +26,13 @@
 - name: Download tree-sitter
   ansible.builtin.get_url:
     url: https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
-    dest: /tmp/tree-sitter-linux-x64.gz
+    dest: /usr/local/bin/tree-sitter.gz
   when: not install_ts.stat.exists
+  register: ts_dl
  
-- name: Unarchive tree-sitter
-  ansible.builtin.unarchive:
-    src: /tmp/tree-sitter-linux-x64.gz
-    dest: /usr/local/bin
+- name: Uncompress tree-sitter
+  command:
+    src: gzip -d {{ts_dl.dest}}
   when: not install_ts.stat.exists
 
 - name: Clone
