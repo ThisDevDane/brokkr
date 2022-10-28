@@ -24,7 +24,7 @@
 
 - name: Download tree-sitter
   ansible.builtin.unarchive:
-    url: https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
+    src: https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
     dest: /usr/local/bin
   when: not install_ts.stat.exists
 
