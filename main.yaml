@@ -13,7 +13,7 @@
     - role: docker
       when: is_wsl|default(false)|bool == false
     - role: neovim
-    - role: ansible-role-asdf
+    - role: asdf
       become: true
       asdf_user: "{{ ansible_user_id }}"
       asdf_plugins:
