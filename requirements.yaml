@@ -2,3 +2,4 @@ collections:
   - name: community.general
 roles:
   - name: cimon-io.asdf
+  - name: gantsign.golang
