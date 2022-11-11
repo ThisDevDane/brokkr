@@ -15,7 +15,7 @@
     - role: neovim
     - role: ansible-role-asdf
       become: true
-      asdf_user: {{ ansible_user_id }} 
+      asdf_user: "{{ ansible_user_id }}"
       asdf_plugins:
         - name: "nodejs"
           version: ["lts"]
