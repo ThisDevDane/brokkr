@@ -14,5 +14,6 @@
       - nmap
       - net-tools
       - p7zip-full
+      - htop
     state: latest
   become: yes
