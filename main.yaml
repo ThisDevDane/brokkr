@@ -16,6 +16,7 @@
     - role: cimon-io.asdf
       become: true
       asdf_user: "{{ ansible_user_id }}"
+      asdf_group: "{{ ansible_user_id }}"
       asdf_plugins:
         - name: "nodejs"
           version: ["lts"]
