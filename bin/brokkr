@@ -5,30 +5,30 @@ set -euo pipefail # Fail fast and catch variable typos
 CONFIG_DIR="$HOME/.config/brokkr"
 BROKKR_DIR="$HOME/.brokkr"
 
-# # Install Ansible
-# echo "Checking for ansible install"
-# if ! [ -x "$(command -v ansible)" ]; then
-#   echo "Installing ansible..."
-#   sudo apt-get -y install ansible
-# fi
-#
-# echo "Checking for git install"
-# if ! [ -x "$(command -v git)" ]; then
-#   echo "Installing git..."
-#   sudo apt-get -y install git
-# fi
-#
-# # Clone repository
-# echo "Downloading Brokkr..."
-# if ! [[ -d "$BROKKR_DIR" ]]; then
-#   git clone "https://github.com/ThisDrunkDane/brokkr.git" "$BROKKR_DIR"
-# else
-#   git -C "$BROKKR_DIR" pull
-# fi
-#
-# # Change cwd
-# cd $BROKKR_DIR
-#
+# Install Ansible
+echo "Checking for ansible install"
+if ! [ -x "$(command -v ansible)" ]; then
+  echo "Installing ansible..."
+  sudo apt-get -y install ansible
+fi
+
+echo "Checking for git install"
+if ! [ -x "$(command -v git)" ]; then
+  echo "Installing git..."
+  sudo apt-get -y install git
+fi
+
+# Clone repository
+echo "Downloading Brokkr..."
+if ! [[ -d "$BROKKR_DIR" ]]; then
+  git clone "https://github.com/ThisDrunkDane/brokkr.git" "$BROKKR_DIR"
+else
+  git -C "$BROKKR_DIR" pull
+fi
+
+# Change cwd
+cd $BROKKR_DIR
+
 REQ_FILE="requirements.yaml"
 REQ_CACHE_FILE="/tmp/$REQ_FILE.cache"
 # Update Galaxy
@@ -46,6 +46,6 @@ else
   fi
 fi
 
-# # Run playbook
-# echo "Run Brokkr playbook"
-# ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$BROKKR_DIR/main.yaml" "$@"
+# Run playbook
+echo "Run Brokkr playbook"
+ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$BROKKR_DIR/main.yaml" "$@"
