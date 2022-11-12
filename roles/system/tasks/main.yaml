@@ -17,3 +17,14 @@
       - htop
     state: latest
   become: yes
+
+- name: Setup directory structure
+  ansible.builtin.file:
+    path: "{{ansible_user_dir}}/dev"
+    state: directory
+
+- name: Setup directory structure
+  ansible.builtin.file:
+    path: "{{ansible_user_dir}}/dev/repo"
+    state: directory
+
