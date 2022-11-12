@@ -26,4 +26,5 @@
         - name: "kubectl"
           versions: ["1.23.14", "1.24.8"]
           global: "1.23.14"
+    - role: k9s
 
