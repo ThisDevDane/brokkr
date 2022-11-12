@@ -1,0 +1,14 @@
+---
+- name: Download k9s
+  ansible.builtin.unarchive:
+    url: https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_x86_64.tar.gz
+    dest: /usr/local/bin
+    remote_src: true
+  become: yes
+
+- name: Set executable flag on k9s
+  ansible.builtin.file:
+    path: "/usr/local/bin/k9s"
+    mode: a+x
+  become: yes
+
