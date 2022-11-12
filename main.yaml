@@ -28,4 +28,5 @@
           global: "1.23.14"
     - role: k9s
     - role: diodonfrost.pulumi
+      become: yes
 
