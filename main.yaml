@@ -29,4 +29,6 @@
     - role: k9s
     - role: diodonfrost.pulumi
       become: yes
+    - role: geerlingguy.helm
+      become: yes
 

@@ -4,3 +4,4 @@ roles:
   - name: cimon-io.asdf
   - name: gantsign.golang
   - name: diodonfrost.pulumi
+  - name: geerlingguy.helm
