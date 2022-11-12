@@ -4,4 +4,4 @@
   ansible.builtin.copy:
     dest: /etc/wsl.conf
     src: wsl.conf
-    become: yes
+  become: yes
