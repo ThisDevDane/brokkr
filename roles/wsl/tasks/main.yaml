@@ -1,0 +1,7 @@
+---
+
+- name: Copy wsl.conf to /etc
+  ansible.builtin.copy:
+    dest: /etc/wsl.conf
+    src: wsl.conf
+    become: yes
