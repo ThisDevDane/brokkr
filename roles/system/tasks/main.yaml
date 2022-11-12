@@ -15,6 +15,7 @@
       - net-tools
       - p7zip-full
       - htop
+      - socat
     state: latest
   become: yes
 
