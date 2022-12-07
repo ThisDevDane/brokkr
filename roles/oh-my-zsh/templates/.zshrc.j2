@@ -36,8 +36,9 @@ if [ -f "$HOME/.zsh_private" ]; then . "$HOME/.zsh_private"; fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Auto-complete
-eval "$(cmctl completion zsh)"; compdef _cmctl cmctl
-eval "$(argocd completion zsh)"; compdef _argocd argocd
+#eval "$(cmctl completion zsh)"; compdef _cmctl cmctl
+#eval "$(argocd completion zsh)"; compdef _argocd argocd
+eval "$(op completion zsh)"; compdef _op op
 
 {% if npiperelay_path is defined %}
 # https://1password.community/discussion/128023/ssh-agent-on-windows-subsystem-for-linux

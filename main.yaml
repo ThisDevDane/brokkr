@@ -32,6 +32,8 @@
     - role: geerlingguy.helm
       helm_version: 'v3.10.2'
       become: yes
+    - role: 1pass
+      become: yes
     - role: wsl
       when: is_wsl|default(false)|bool == true
 

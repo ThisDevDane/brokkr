@@ -1,0 +1,18 @@
+---
+- name: Add 1Password apt repository
+  block:
+    - name: Add key
+      ansible.builtin.get_url:
+        url: https://downloads.1password.com/linux/keys/1password.asc
+        dest: /etc/apt/trsusted.gpg.d/1password.asc
+    - name: Add repository
+      ansbile.builtin.apt_repository:
+        repo: deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/{{ ansible_distribution }}/amd64 stable main
+        state: present
+
+- name: Install op
+  ansible.builtin.package:
+    name:
+      - 1password-cli
+    state: latest
+  become: yes
