@@ -4,7 +4,7 @@
     - name: Add key
       ansible.builtin.get_url:
         url: https://downloads.1password.com/linux/keys/1password.asc
-        dest: /etc/apt/trsusted.gpg.d/1password.asc
+        dest: /etc/apt/trusted.gpg.d/1password.asc
 
     - name: Add repository
       ansible.builtin.apt_repository:
