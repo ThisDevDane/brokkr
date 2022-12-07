@@ -8,7 +8,7 @@
 
     - name: Add repository
       ansible.builtin.apt_repository:
-        repo: deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/{{ ansible_distribution }}/amd64 stable main
+        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/1password.asc] https://downloads.1password.com/linux/{{ ansible_distribution }}/amd64 stable main
         state: present
 
 - name: Install op
