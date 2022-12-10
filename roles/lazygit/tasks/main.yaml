@@ -16,7 +16,7 @@
 
 - name: Install lazygit
   ansible.builtin.copy:
-    src: /tmp/k9s/lazygit
+    src: /tmp/lazygit/lazygit
     dest: /usr/local/bin/lazygit
   become: yes
 
