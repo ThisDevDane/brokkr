@@ -1,0 +1,31 @@
+---
+- name: Make temp downlaod directory
+  ansible.builtin.file:
+    path: /tmp/sshconfig-1password
+    state: directory
+
+- name: Download sshconfig-1password
+  ansible.builtin.unarchive:
+    src: https://github.com/thisdevdane/sshconfig-1password/releases/latest/download/sshconfig-1password-linux-amd64.zip
+    dest: /tmp/sshconfig-1password
+    remote_src: true
+
+- name: Install sshconfig-1password
+  ansible.builtin.copy:
+    src: /tmp/sshconfig-1password/sshconfig-1password
+    dest: /usr/local/bin/sshconfig-1password
+  become: yes
+
+- name: Set ownership/permissions on sshconfig-1password
+  ansible.builtin.file:
+    path: "/usr/local/bin/sshconfig-1password"
+    mode: a+x
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  become: yes
+
+- name: Delete download
+  ansible.builtin.file:
+    path: /tmp/sshconfig-1password
+    state: absent
+
