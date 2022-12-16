@@ -29,3 +29,12 @@
     path: /tmp/sshconfig-1password
     state: absent
 
+- name: Copy update-conf.sh to .ssh folder
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/update-conf.sh"
+    src: update-conf.sh
+
+- name: Set ownership/permissions on update-conf.sh
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ssh/update-conf.sh"
+    mode: u+x
