@@ -12,6 +12,7 @@
     - role: oh-my-zsh
     - role: docker
       when: is_wsl|default(false)|bool == false
+    - role: podman
     - role: gantsign.golang
       golang_version: '1.19.3'
     - role: neovim
