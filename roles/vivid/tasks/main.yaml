@@ -20,4 +20,5 @@
 
 - name: Install vivid
   apt: deb="{{ vivid_download.dest }}"
+  become: true
   when: vivid_check_deb.rc == 1
