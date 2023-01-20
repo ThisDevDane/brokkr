@@ -1,0 +1,24 @@
+---
+- name: Check if vivid is installed
+  command: dpkg-query -W vivid
+  register: vivid_check_deb
+  failed_when: vivid_check_deb.rc > 1
+  changed_when: vivid_check_deb.rc == 1
+
+- name: Make temp download directory
+  ansible.builtin.file:
+    path: /tmp/vivid
+    state: directory
+  when: vivid_check_deb.rc == 1
+
+- name: Download vivid
+  ansible.builtin.get_url:
+    url: https://github.com/sharkdp/vivid/releases/download/v0.8.0/vivid_0.8.0_amd64.deb
+    dest: /tmp/vivid/vivid.deb
+  register: vivid_download
+  when: vivid_check_deb.rc == 1
+
+- name: Install vivid
+  apt: deb="{{ vivid_download.dest }}"
+  sudo: true
+  when: vivid_check_deb.rc == 1

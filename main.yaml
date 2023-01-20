@@ -37,6 +37,7 @@
       become: yes
     - role: lazygit
     - role: sshconfig-1password
+    - role: vivid
     - role: wsl
       when: is_wsl|default(false)|bool == true
 
