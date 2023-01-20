@@ -31,7 +31,7 @@
 
 - name: Ensure .ssh directory
   file:
-    path: "{{ ansible_user_dir }}/.ssh/update-conf.sh"
+    path: "{{ ansible_user_dir }}/.ssh"
     state: directory
 
 - name: Copy update-conf.sh to .ssh folder
