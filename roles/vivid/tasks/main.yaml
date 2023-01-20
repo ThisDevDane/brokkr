@@ -26,4 +26,4 @@
 - name: Download/Update vivid catppuccin-macchiato theme
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/sharkdp/vivid/master/themes/catppuccin-macchiato.yml
-    dest: {{ ansible_user_dir }}/.config/vivid/
+    dest: "{{ ansible_user_dir }}/.config/vivid/"
