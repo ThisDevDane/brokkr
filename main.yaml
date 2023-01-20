@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-
+  become: true
   vars:
     is_wsl: "{% if ansible_env.WSL_DISTRO_NAME is defined %}true{% else %}false{%endif%}"
 
@@ -17,7 +17,6 @@
       golang_version: '1.19.3'
     - role: neovim
     - role: cimon-io.asdf
-      become: true
       asdf_user: "{{ ansible_user_id }}"
       asdf_group: "{{ ansible_user_id }}"
       asdf_plugins:
@@ -29,12 +28,9 @@
           global: "1.23.14"
     - role: k9s
     - role: diodonfrost.pulumi
-      become: yes
     - role: geerlingguy.helm
       helm_version: 'v3.10.2'
-      become: yes
     - role: 1pass
-      become: yes
     - role: lazygit
     - role: sshconfig-1password
     - role: vivid
