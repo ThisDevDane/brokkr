@@ -3,7 +3,8 @@
   connection: local
   become: true
   vars:
-    is_wsl: "{% if ansible_env.WSL_DISTRO_NAME is defined %}true{% else %}false{%endif%}"
+    #is_wsl: "{% if ansible_env.WSL_DISTRO_NAME is defined %}true{% else %}false{%endif%}"
+    is_wsl: true
 
   roles:
     - role: system
