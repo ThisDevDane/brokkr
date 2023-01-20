@@ -20,5 +20,4 @@
 
 - name: Install vivid
   apt: deb="{{ vivid_download.dest }}"
-  sudo: true
   when: vivid_check_deb.rc == 1
