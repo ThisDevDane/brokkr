@@ -35,12 +35,12 @@ REQ_CACHE_FILE="/tmp/$REQ_FILE.cache"
 if [ ! -f $REQ_CACHE_FILE ]; then
   echo "first run, caching $REQ_FILE and running ansible-galaxy"
   cp -p $REQ_FILE $REQ_CACHE_FILE
-  ansible-galaxy install -r $REQ_FILE
+  ansible-galaxy install --force -r $REQ_FILE
 else 
   if [ $REQ_FILE -nt $REQ_CACHE_FILE ]; then
     echo "$REQ_FILE has changed, updating ansible-galaxy"
     cp -p $REQ_FILE $REQ_CACHE_FILE
-    ansible-galaxy install -r $REQ_FILE
+    ansible-galaxy install --force -r $REQ_FILE
   else 
     echo "$REQ_FILE hasn't changed, not running ansible-galaxy"
   fi
