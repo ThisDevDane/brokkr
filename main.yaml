@@ -22,6 +22,9 @@
       asdf_user: "{{ ansible_user_id }}"
       asdf_group: "{{ ansible_user_id }}"
       asdf_plugins:
+        - name: just
+          versions: ["latest"]
+          global: "latest"
         - name: "nodejs"
           versions: ["lts"]
           global: "lts"
