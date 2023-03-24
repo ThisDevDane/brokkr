@@ -15,7 +15,7 @@
       when: is_wsl|default(false)|bool == false
     #- role: podman
     - role: gantsign.golang
-      golang_version: '1.20.1'
+      golang_version: '1.20.2'
     - role: neovim
     - role: cimon-io.asdf
       become: true
@@ -25,17 +25,19 @@
         - name: just
           versions: ["latest"]
           global: "latest"
+        - name: k9s
+          versions: ["latest"]
+          global: "latest"
+        - name: helm
+          versions: ["latest"]
+          global: "latest"
         - name: "nodejs"
           versions: ["lts"]
           global: "lts"
         - name: "kubectl"
           versions: ["1.23.14", "1.24.8"]
           global: "1.23.14"
-    - role: k9s
     - role: diodonfrost.pulumi
-      become: yes
-    - role: geerlingguy.helm
-      helm_version: 'v3.10.2'
       become: yes
     - role: 1pass
       become: yes
