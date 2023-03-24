@@ -37,6 +37,9 @@
         - name: "kubectl"
           versions: ["1.23.14", "1.24.8"]
           global: "1.23.14"
+        - name: "minikube"
+          versions: ["latest"]
+          global: "latest"
     - role: diodonfrost.pulumi
       become: yes
     - role: 1pass
