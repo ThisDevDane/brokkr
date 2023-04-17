@@ -8,8 +8,7 @@
     - role: zsh
     - role: oh-my-zsh
     - role: docker
-      when: install_docker|default(false)|bool == false
-    #- role: podman
+      when: {{ install_docker | default(false) }} == false
     - role: gantsign.golang
       golang_version: '1.20.2'
     - role: neovim
