@@ -1,9 +1,36 @@
 ---
+- name: Install required packages
+  ansible.builtin.package:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: latest
+  become: yes
+
+- name: Add docker apt repository
+  block:
+    - name: Add key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/trusted.gpg.d/docker.asc
+        mode: '0644'
+        force: true
+
+    - name: Add repository
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/debian bullseye stable
+        state: present
+        update_cache: true
+
 - name: Install
   ansible.builtin.package:
     name:
-      - docker
-      - docker-compose
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
     state: latest
   become: yes
 
