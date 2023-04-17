@@ -8,7 +8,7 @@
     - role: zsh
     - role: oh-my-zsh
     - role: docker
-      when: {{ install_docker | default(false) }}
+      when: install_docker
     - role: gantsign.golang
       golang_version: '1.20.2'
     - role: neovim
@@ -43,6 +43,5 @@
     - role: sshconfig-1password
     - role: vivid
     - role: wsl
-      when: {{ is_wsl | default(false) }}
-
+      when: is_wsl
 
