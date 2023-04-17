@@ -9,6 +9,7 @@
     - role: oh-my-zsh
     - role: docker
       when: install_docker
+      become: yes
     - role: gantsign.golang
       golang_version: '1.20.2'
     - role: neovim
