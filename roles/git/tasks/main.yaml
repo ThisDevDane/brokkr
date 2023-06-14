@@ -7,10 +7,11 @@
   become: yes
 
 - name: Install
-  ansible.builtin.package:
-    name:
-      - git/bullseye-backports
+  ansible.builtin.apt:
+    name: git
     state: latest
+    update_cache: yes
+    default_release: bullseye-backports
   become: yes
 
 - name: Set fetch.prune
