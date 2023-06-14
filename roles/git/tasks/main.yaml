@@ -4,6 +4,7 @@
     repo: deb http://deb.debian.org/debian bullseye-backports main
     state: present
     update_cache: true
+  become: yes
 
 - name: Install
   ansible.builtin.package:
