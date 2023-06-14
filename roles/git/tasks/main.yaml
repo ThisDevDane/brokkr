@@ -1,8 +1,14 @@
 ---
+- name: Add debian backports repository
+  ansible.builtin.apt_repository:
+    repo: deb http://deb.debian.org/debian bullseye-backports main
+    state: present
+    update_cache: true
+
 - name: Install
   ansible.builtin.package:
     name:
-      - git
+      - git/bullseye-backports
     state: latest
   become: yes
 
