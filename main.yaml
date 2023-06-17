@@ -28,8 +28,8 @@
           versions: ["latest"]
           global: "latest"
         - name: "nodejs"
-          versions: ["lts"]
-          global: "lts"
+          versions: ["18.16.0"]
+          global: "18.16.0"
         - name: "kubectl"
           versions: ["latest"]
           global: "latest"
