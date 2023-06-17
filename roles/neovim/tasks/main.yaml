@@ -87,7 +87,6 @@
     depth: 1
     dest: "{{ ansible_user_dir }}/.config/nvim"
     force: yes
-    repo: git@github.com:neovim/neovim.git
+    repo: git@github.com:ThisDevDane/nvim-config.git
     update: yes
-    version: "new"
  
