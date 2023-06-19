@@ -9,6 +9,8 @@
   ansible.builtin.package:
     name:
       - jq
+      - fzf
+      - ripgrep
       - curl
       - dnsutils
       - nmap

@@ -7,6 +7,7 @@
     - role: git
     - role: zsh
     - role: oh-my-zsh
+    - role: tmux
     - role: docker
       when: install_docker
       become: yes
