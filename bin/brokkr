@@ -11,8 +11,7 @@ if ! [ -x "$(command -v ansible)" ]; then
   echo "Installing ansible..."
   sudo pacman -S ansible --noconfirm
 fi
-   - role: wsl
-      when: is_wsl
+
 echo "Checking for git install"
 if ! [ -x "$(command -v git)" ]; then
   echo "Installing git..."
