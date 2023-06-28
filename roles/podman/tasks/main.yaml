@@ -1,6 +1,0 @@
----
-- name: Install Podman
-  package:
-    name: "podman"
-    state: latest
-  become: yes

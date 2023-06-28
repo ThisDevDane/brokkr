@@ -1,35 +1,7 @@
 ---
-- name: Make temp download directory
-  ansible.builtin.file:
-    path: /tmp/lazygit
-    state: directory
-
-- name: Find the latest lazygit version
-  ansible.builtin.shell: curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/'
-  register: lazygit_version
-
-- name: Download lazygit
-  ansible.builtin.unarchive:
-    src: https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version.stdout }}_Linux_x86_64.tar.gz
-    dest: /tmp/lazygit
-    remote_src: true
-
-- name: Install lazygit
-  ansible.builtin.copy:
-    src: /tmp/lazygit/lazygit
-    dest: /usr/local/bin/lazygit
-  become: yes
-
-- name: Set ownership/permissions on lazygit
-  ansible.builtin.file:
-    path: "/usr/local/bin/lazygit"
-    mode: a+x
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
-  become: yes
-
-- name: Delete download
-  ansible.builtin.file:
-    path: /tmp/lazygit
-    state: absent
-
+- name: Install
+  kewlfft.aur.aur:
+    use: yay
+    state: latest
+    name:
+      - lazygit

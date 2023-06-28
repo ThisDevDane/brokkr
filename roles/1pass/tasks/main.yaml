@@ -1,22 +1,8 @@
 ---
-- name: Add 1Password apt repository
-  block:
-    - name: Add key
-      ansible.builtin.get_url:
-        url: https://downloads.1password.com/linux/keys/1password.asc
-        dest: /etc/apt/trusted.gpg.d/1password.asc
-        mode: '0644'
-        force: true
-
-    - name: Add repository
-      ansible.builtin.apt_repository:
-        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/1password.asc] https://downloads.1password.com/linux/{{ ansible_distribution | lower }}/amd64 stable main
-        state: present
-        update_cache: true
-
-- name: Install op
-  ansible.builtin.package:
-    name:
-      - 1password-cli
+- name: Install
+  kewlfft.aur.aur:
+    use: yay
     state: latest
-  become: yes
+    name:
+      - 1password
+      - 1password-cli

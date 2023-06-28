@@ -9,19 +9,20 @@ BROKKR_DIR="$HOME/.brokkr"
 echo "Checking for ansible install"
 if ! [ -x "$(command -v ansible)" ]; then
   echo "Installing ansible..."
-  sudo apt-get -y install ansible
+  sudo pacman -S ansible --noconfirm
 fi
-
+   - role: wsl
+      when: is_wsl
 echo "Checking for git install"
 if ! [ -x "$(command -v git)" ]; then
   echo "Installing git..."
-  sudo apt-get -y install git
+  sudo pacman -S git --noconfirm
 fi
 
 # Clone repository
 echo "Downloading Brokkr..."
 if ! [[ -d "$BROKKR_DIR" ]]; then
-  git clone "https://github.com/ThisDrunkDane/brokkr.git" "$BROKKR_DIR"
+  git clone -b arch "https://github.com/ThisDrunkDane/brokkr.git" "$BROKKR_DIR"
 else
   git -C "$BROKKR_DIR" pull
 fi
