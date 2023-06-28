@@ -1,6 +1,6 @@
 ---
 - name: Install
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: git
     state: latest
     update_cache: yes
