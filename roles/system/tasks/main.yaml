@@ -12,6 +12,7 @@
       - p7zip
       - htop
       - socat
+      - unzip
     state: latest
   become: yes
 
