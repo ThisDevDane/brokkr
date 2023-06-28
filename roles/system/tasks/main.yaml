@@ -6,10 +6,10 @@
       - fzf
       - ripgrep
       - curl
-      - dnsutils
+      - ldns
       - nmap
       - net-tools
-      - p7zip-full
+      - 7-zip-full
       - htop
       - socat
     state: latest
