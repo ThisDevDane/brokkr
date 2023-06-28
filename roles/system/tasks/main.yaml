@@ -9,7 +9,7 @@
       - ldns
       - nmap
       - net-tools
-      - 7-zip-full
+      - p7zip
       - htop
       - socat
     state: latest
