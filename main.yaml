@@ -36,6 +36,7 @@
       become: yes
     - role: 1pass
       become: yes
+    - role: k9s
     - role: lazygit
     - role: sshconfig-1password
     - role: vivid
