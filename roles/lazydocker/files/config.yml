@@ -1,0 +1,6 @@
+logs:
+  timestamps: true
+  since: ''
+  tail: '1000'
+commandTemplates:
+  dockerCompose: 'docker compose'
