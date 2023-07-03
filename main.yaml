@@ -38,6 +38,7 @@
       become: yes
     - role: k9s
     - role: lazygit
+    - role: lazydocker
     - role: sshconfig-1password
     - role: vivid
     - role: wsl
