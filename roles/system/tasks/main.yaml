@@ -13,6 +13,7 @@
       - htop
       - socat
       - unzip
+      - fd
     state: latest
   become: yes
 
