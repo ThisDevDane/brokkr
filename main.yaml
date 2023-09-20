@@ -9,8 +9,9 @@
     - role: oh-my-zsh
     - role: tmux
     - role: docker
+    - role: 1pass
     - role: gantsign.golang
-      golang_version: '1.20.2'
+      golang_version: '1.21.1'
     - role: neovim
     - role: cimon-io.asdf
       become: true
@@ -33,8 +34,6 @@
           versions: ["latest"]
           global: "latest"
     - role: diodonfrost.pulumi
-      become: yes
-    - role: 1pass
       become: yes
     - role: k9s
     - role: lazygit
