@@ -17,6 +17,13 @@
     state: latest
   become: yes
 
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: yay
+    state: latest
+    name:
+      - postman-bin
+
 - name: Setup directory structure
   ansible.builtin.file:
     path: "{{ansible_user_dir}}/dev"
