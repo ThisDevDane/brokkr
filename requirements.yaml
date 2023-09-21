@@ -4,3 +4,4 @@ collections:
 roles:
   - name: cimon-io.asdf
   - name: gantsign.golang
+  - name: diodonfrost.pulumi
