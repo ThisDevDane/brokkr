@@ -14,12 +14,11 @@
 
 - name: Copy config.yml
   ansible.builtin.copy:
-    src: "{{ ansible_user_dir }}/.config/kitty/kitty.conf" 
-    remote_src: yes
-    dest: "{{ ansible_user_dir }}/.config/kitty/kitty.conf.default"
-
-- name: Copy config.yml
-  ansible.builtin.copy:
     dest: "{{ ansible_user_dir }}/.config/kitty/kitty.conf"
     src: kitty.conf
+
+- name: Copy startup.session
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/kitty/startup.session"
+    src: startup.session
 
